@@ -1,10 +1,13 @@
 <script>
 import { store } from './store';
+import axios from 'axios'
 import AppHeader from './components/header/AppHeader.vue'
+import AppSearchbar from './components/main/AppSearchbar.vue'
 
     export default {
         components:{
             AppHeader,
+            AppSearchbar,
         },
 
         data() {
@@ -12,7 +15,9 @@ import AppHeader from './components/header/AppHeader.vue'
                 store
             }
         },
-        mounted() {}
+        mounted() {
+            axios.get(store.apiUrl).then( r => {store.yugiohCards = r.data.data} )
+        }
     }
 
 </script>
@@ -22,7 +27,11 @@ import AppHeader from './components/header/AppHeader.vue'
     <header>
         <AppHeader/>
     </header>
-    
+
+    <main>
+        <AppSearchbar/>
+    </main>
+
 </template>
 
 
