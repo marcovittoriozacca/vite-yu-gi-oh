@@ -35,6 +35,7 @@ import { store } from '../../store'
             border: .5px solid black;
             border-radius: 5px;
             margin-block: 20px;
+            margin-left: 10px;
         }
     }
 

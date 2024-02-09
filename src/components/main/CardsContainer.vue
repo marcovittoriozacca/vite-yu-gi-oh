@@ -20,6 +20,7 @@ export default {
     <!-- container in cui andranno le carte -->
     <div class="container">
         <div class="padding-custom">
+            <div class="cards-found">Found {{ store.yugiohCards.length }} cards</div>
             <div class="cards-row">
                 <SingleCard
                 v-for="(card, index) in store.yugiohCards" :key="index"
@@ -49,6 +50,13 @@ export default {
 }
 .padding-custom{
     padding: 30px;
+    .cards-found{
+        width: 100%;
+        background-color: rgb(32, 32, 32);
+        color: white;
+        font-weight: bolder;
+        padding: 15px 20px;
+    }
 }
 
 </style>

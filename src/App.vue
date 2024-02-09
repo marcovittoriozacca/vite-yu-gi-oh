@@ -4,14 +4,14 @@ import axios from 'axios'
 import AppHeader from './components/header/AppHeader.vue'
 import AppSearchbar from './components/main/AppSearchbar.vue'
 import CardsContainer from './components/main/CardsContainer.vue'
-import ApiLoeader from './components/main/ApiLoeader.vue';
+import ApiLoader from './components/main/ApiLoader.vue';
 
     export default {
         components:{
             AppHeader,
             AppSearchbar,
             CardsContainer,
-            ApiLoeader,
+            ApiLoader,
         },
         data() {
             return {
@@ -38,7 +38,7 @@ import ApiLoeader from './components/main/ApiLoeader.vue';
         <AppHeader/>
     </header>
 
-    <ApiLoeader v-if="store.loader"/>
+    <ApiLoader v-if="store.loader"/>
     <main v-else>
         <AppSearchbar/>
         <CardsContainer/>
