@@ -3,11 +3,13 @@ import { store } from './store';
 import axios from 'axios'
 import AppHeader from './components/header/AppHeader.vue'
 import AppSearchbar from './components/main/AppSearchbar.vue'
+import CardsContainer from './components/main/CardsContainer.vue'
 
     export default {
         components:{
             AppHeader,
             AppSearchbar,
+            CardsContainer,
         },
 
         data() {
@@ -30,6 +32,7 @@ import AppSearchbar from './components/main/AppSearchbar.vue'
 
     <main>
         <AppSearchbar/>
+        <CardsContainer/>
     </main>
 
 </template>
