@@ -10,7 +10,7 @@
 <template>
     <div>
         <figure>
-            <img :src="element.card_images[0].image_url_small" alt="">
+            <img :src="element.card_images[0].image_url_small" :alt="element.name">
         </figure>
         <div class="card-info">
             <h4>{{ element.name }}</h4>
@@ -21,7 +21,7 @@
 </template>
 
 <style lang="scss" scoped>
-
+@use '../../assets/style/partials/mixins' as *;
     div:not(.card-info){
         width: calc( 100% / 5  - 16px );
         figure{
@@ -32,15 +32,19 @@
         }
         .card-info{
             background-color: orange;
+            @include flex-align-center;
+            flex-direction: column;
+            row-gap: 30px;
+            padding: 15px 5px; 
+
             text-align: center;
-            padding: 15px 5px;
+            min-height: 130px;
             h4{
                 color: white;
-                padding-bottom: 15px;
             }
             span{
                 font-weight: 300;
-
+                margin-top: auto;
             }
         }
     }

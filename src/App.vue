@@ -22,11 +22,23 @@ import ApiLoader from './components/main/ApiLoader.vue';
             getCardsFromAPI(){
                 store.loader = true
 
-                axios.get(store.apiUrl).then( r => {store.yugiohCards = r.data.data; store.loader = false} )
+                axios.get(store.apiUrl).then( (r) => {
+                    store.yugiohCards = r.data.data;
+                     store.loader = false;
+
+                     r.data.data.forEach(element => {
+                        if(element.archetype !== undefined){                            
+                            if(!store.archetypes.includes(element.archetype)){
+                                store.archetypes.push(element.archetype)
+                            }
+                        }
+                     });
+                } )
             }
         },
         mounted() {
             this.getCardsFromAPI()
+
         }
     }
 
@@ -48,6 +60,6 @@ import ApiLoader from './components/main/ApiLoader.vue';
 
 
 <style lang="scss">
-@use './assets/style/general'
+@use './assets/style/general';
 
 </style>

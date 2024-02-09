@@ -5,7 +5,8 @@ import { store } from '../../store'
         
         data() {
             return {
-                store
+                store,
+                
             }
         }
     }
@@ -15,10 +16,10 @@ import { store } from '../../store'
 <template>
     <div>
         <select name="filteredCards" id="filteredCards">
+            <option value="" disabled selected hidden>Seleziona Archetipo</option>
             <option :value="element.archetype" 
-                v-for="(element, index) in store.yugiohCards" :key="index"
-                v-show="element.archetype">
-                {{ element.archetype }}
+                v-for="(element, index) in store.archetypes" :key="index">
+                {{ element }}
             </option>
         </select>
     </div>
