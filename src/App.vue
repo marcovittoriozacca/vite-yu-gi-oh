@@ -19,6 +19,7 @@ import ApiLoader from './components/main/ApiLoader.vue';
             }
         },
         methods: {
+            // function that make the API calla and stores the values in the yugiohCards Array
             getCardsFromAPI(){
                 store.loader = true
 
@@ -26,8 +27,14 @@ import ApiLoader from './components/main/ApiLoader.vue';
                     store.yugiohCards = r.data.data;
                      store.loader = false;
 
+                     // stores all the archetypes in the archetypes array pushing only one for each type. The undefined one will be called 'Nessun Archetipo'
                      r.data.data.forEach(element => {
-                        if(element.archetype !== undefined){                            
+                        if(element.archetype == undefined){
+                            element.archetype = 'Nessun Archetipo'
+                            if(!store.archetypes.includes(element.archetype)){
+                                store.archetypes.push(element.archetype)
+                            }
+                        }else{
                             if(!store.archetypes.includes(element.archetype)){
                                 store.archetypes.push(element.archetype)
                             }

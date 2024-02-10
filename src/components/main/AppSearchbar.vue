@@ -8,7 +8,7 @@ import { store } from '../../store'
                 store,
                 
             }
-        }
+        },
     }
 </script>
 
@@ -17,8 +17,10 @@ import { store } from '../../store'
     <div>
         <select name="filteredCards" id="filteredCards">
             <option value="" disabled selected hidden>Seleziona Archetipo</option>
+            <option value="all" @click="store.searchText = ''">Tutti gli archetipi</option>
             <option :value="element.archetype" 
-                v-for="(element, index) in store.archetypes" :key="index">
+                v-for="(element, index) in store.archetypes" :key="index"
+                @click="store.searchText = element">
                 {{ element }}
             </option>
         </select>
