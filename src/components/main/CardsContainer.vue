@@ -12,20 +12,6 @@ export default {
             store
         }
     },
-    methods: {
-        
-        foundCards(){
-            // shows the number of founds card based on the yu gi oh array.
-            if(store.searchText == ''){
-                return store.yugiohCards.length
-            }else{
-                // shows the number of founds card based on the filteredArray
-                let filteredArray = [];
-                return  filteredArray = store.yugiohCards.filter((element) => element.archetype == store.searchText ).length
-            }
-        }
-    },
-
 }
 </script>
 
@@ -33,7 +19,7 @@ export default {
     <!-- container in cui andranno le carte -->
     <div class="container">
         <div class="padding-custom">
-            <div class="cards-found">Found {{ foundCards() }} cards</div>
+            <div class="cards-found">Found {{ store.yugiohCards.length }} cards</div>
             <div class="cards-row">
                 <SingleCard
                 v-for="(card, index) in store.yugiohCards" :key="index"

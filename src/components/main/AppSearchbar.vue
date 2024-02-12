@@ -8,20 +8,19 @@ import { store } from '../../store'
                 store,
                 
             }
-        },
+        }
     }
 </script>
 
 
 <template>
     <div>
-        <select name="filteredCards" id="filteredCards">
+        <select name="filteredCards" id="filteredCards" v-model="store.searchText"  @change='$emit("archetypeFilter")'>
             <option value="" disabled selected hidden>Seleziona Archetipo</option>
-            <option value="all" @click="store.searchText = ''">Tutti gli archetipi</option>
-            <option :value="element.archetype" 
-                v-for="(element, index) in store.archetypes" :key="index"
-                @click="store.searchText = element">
-                {{ element }}
+            <option value="all">Tutti gli archetipi</option>
+            <option :value="element.archetype_name" 
+                v-for="(element, index) in store.archetypes" :key="index">
+                {{ element.archetype_name }}
             </option>
         </select>
     </div>
@@ -40,6 +39,9 @@ import { store } from '../../store'
             margin-block: 20px;
             margin-left: 10px;
             cursor: pointer;
+
+            max-height: 200px;
+            overflow-y: hidden;
         }
     }
 

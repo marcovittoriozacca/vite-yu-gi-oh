@@ -10,26 +10,19 @@ import { store } from '@/store';
                 store,
             }
         },
-        methods: {
-            matchingArchetypes(element){
-                return element.archetype == store.searchText || store.searchText == ''
-            }
-        },
     }
 </script>
 
 <template>
-    <!-- the single card will be shown in the CardsContainer only if the store.searchText is empty or if it matches the value of the element.archetype 
-        this will effectively filter the elements -->
-        
-    <div class="card-container"
-        v-show="matchingArchetypes(element)">
+
+    <div class="card-container">
         <figure>
             <img :src="element.card_images[0].image_url_small" :alt="element.name">
         </figure>
         <div class="card-info">
             <h4>{{ element.name }}</h4>
-            <span v-show="element.archetype != 'Nessun Archetipo'">{{element.archetype}}</span>
+            <span v-if="element.archetype">{{element.archetype}}</span>
+            <span v-else>No Archetype</span>
         </div>
     </div>
 
